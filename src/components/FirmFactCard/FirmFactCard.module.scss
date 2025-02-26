@@ -1,0 +1,24 @@
+.card {
+  width: clamp(145px, 18vw, 364px);
+  height: clamp(160px, 17vw, 322px);
+  background: rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 16px solid transparent;
+  transition: background 0.3s ease, border 0.3s ease;
+  box-sizing: border-box;
+}
+
+.tall {
+  width: clamp(145px, 18vw, 364px);
+  height: calc((clamp(160px, 17vw, 322px) * 2) + calc(6px + (12 * ((min(max(100vw, 768px), 1680px) - 768px) / (1680 - 768)))));
+}
+
+.default:hover {
+  background: rgba(7, 192, 106, 1);
+}
+
+.border:hover {
+  border: 16px solid rgba(7, 192, 106, 1);
+}
