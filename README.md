@@ -1,70 +1,158 @@
-# Getting Started with Create React App
+# Firm Facts - Frontend Coding Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📌 Overview
+This project is a **frontend coding challenge** that involves implementing a responsive "Firm Facts" section based on a Figma design. The implementation is **pixel-perfect**, fully responsive, and follows best practices using **React (functional components) and SCSS Modules**.
 
-## Available Scripts
+## 🛠️ Tech Stack
+- **React** (Functional Components)
+- **SCSS Modules** (for modular styling)
+- **CSS Grid & Flexbox** (for layout and responsiveness)
+- **SVG Assets** (for icons)
+- **Git & GitHub** (for version control)
 
-In the project directory, you can run:
+## 📸 Design Implementation
+The goal of this project was to replicate the given **Figma design** as accurately as possible while ensuring:
+1. **Pixel-perfect implementation** 📏
+2. **Full responsiveness** across different screen sizes 📱💻
+3. **Smooth interactivity** for hover states & user interactions 🖱️
 
-### `npm start`
+## 📐 Responsive Behavior
+- The layout scales **proportionally** between **768px and 1680px**.
+- A **grid structure** ensures that cards resize in sync with the layout.
+- The **border thickness, gaps, and button sizes** adjust dynamically.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🎨 Styles & Interactivity
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### **1️⃣ Firm Fact Cards**
+- **Two variants:** `default` (solid background) and `border` (outlined).
+- A **tall card** that spans **two rows**.
+- **Hover effects:**  
+  - `default` cards turn green.  
+  - `border` cards retain their white background but get a green border.
 
-### `npm test`
+### **2️⃣ Buttons**
+- **Two variants:** `default` and `icon`.
+- A **disabled state** that remains gray even on hover.
+- **Positioning:**  
+  - In `default` variant cards, buttons are **vertically centered**.  
+  - In `border` variant cards, buttons are placed **closer to the top**.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### **3️⃣ Close Icon**
+- A **close button** appears at the top-right of each card.
+- It **scales proportionally** with the viewport.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 How to Run the Project
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Follow these steps to set up and run the project locally:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1️⃣ Clone the repository:
+```sh
+git clone https://github.com/renzocaffesse/styling-challenge.git
+```
 
-### `npm run eject`
+### 2️⃣ Navigate to the project directory:
+```sh
+cd styling-challenge
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3️⃣ Install dependencies:
+```sh
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4️⃣ Start the development server:
+```sh
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🎈 SCSS Best Practices & Optimizations
 
-## Learn More
+This project follows SCSS best practices to ensure modularity, maintainability, and performance.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 1️⃣ Use of SCSS Modules
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Each component has its own SCSS module to maintain scope isolation.
 
-### Code Splitting
+Avoids global styles leaking into components.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 2️⃣ SCSS Nesting for Cleaner Code
 
-### Analyzing the Bundle Size
+Instead of manually writing separate class names, styles are nested for clarity.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```scss
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-### Making a Progressive Web App
+  &:hover {
+    background: $hover-green;
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  &.disabled {
+    background: $disabled-bg;
+    cursor: not-allowed;
+  }
+}
+```
+## 3️⃣ Use of SCSS Variables
 
-### Advanced Configuration
+Centralized colors, spacing, and sizes to avoid hardcoded values.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```scss
+$primary-bg: rgba(255, 255, 255, 1);
+$hover-green: rgba(7, 192, 106, 1);
+$disabled-bg: rgba(170, 170, 170, 1);
+```
+## 4️⃣ Responsive Scaling Without Media Queries
 
-### Deployment
+One of the key aspects of this implementation is the fully responsive behavior without using media queries.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## How it Works
 
-### `npm run build` fails to minify
+Each resizable property (e.g., **width, height, padding, gap, border, font-size**, etc.) follows this formula:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```scss
+property: min(maxValue, calc(minValue + (difference * ((100vw - minViewport) / (maxViewport - minViewport)))));
+```
+## Breaking Down the Formula
+
+- **maxValue** → The maximum size an element should have (applies when the viewport is **>=1680px**).
+
+- **minValue** → The minimum size an element should have (applies when the viewport is **<=768px**).
+
+- **difference** →  The range between max and min values, which determines the total scaling adjustment.
+
+- **(100vw - minViewport) / (maxViewport - minViewport)** → This creates a normalized ratio (from **0** to **1**) that smoothly adjusts values between **768px** and **1680px**, based on the current viewport width:
+
+  - When the viewport is at 768px, the ratio is **0**, meaning **the property will take its minimum value**.
+
+  - When the viewport is at 1680px, the ratio is **1**, meaning **the property will take its maximum value**.
+
+  - For any width between **768px** and **1680px**, **the ratio is a value between 0 and 1, ensuring a smooth and proportional scaling**.
+
+
+## Example Usage
+
+For a button's padding:
+```scss
+padding: min(10px, calc(10px + (4 * ((100vw - 1680px) / (1680 - 768)))))
+         min(27px, calc(27px + (15 * ((100vw - 1680px) / (1680 - 768)))));
+```
+This ensures that the padding remains fixed at **10px 27px** for viewports **>=1680px**, and gradually decreases for smaller viewports, down to **4px 15px** at **768px**.
+
+This approach makes the design fluid and avoids hard breakpoints, making the layout smoother and more predictable across different screen sizes.
+
+---
+
+## 🔍 Key Design Considerations
+
+> ### **Button Alignment in Figma**
+> - I noticed that in the Figma design, some buttons were slightly misaligned.
+> - Specifically, the **tall card’s button** was shifted **8px to the right**, and the buttons in the **second and third columns after the tall card** were **5px off-center**.
+> - **However, I decided to focus on aligning all buttons consistently according to the challenge requirements**.  
+> - I mention this in case the original misalignment was intentional.

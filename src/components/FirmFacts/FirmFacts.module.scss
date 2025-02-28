@@ -1,43 +1,66 @@
+$bg-dark: rgba(45, 62, 78, 1);
+$white: rgba(255, 255, 255, 1);
+$white-transparent: rgba(255, 255, 255, 0.2);
+
 .wrapper {
   max-width: 1680px;
   min-width: 768px;
   width: calc(768px + (100vw - 768px) * (912 / 912));
   padding: 85px;
   margin: 100px auto;
-  background: rgba(45, 62, 78, 1);
+  background: $bg-dark;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   box-sizing: border-box;
-}
+  position: relative;
 
-.title {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  font-size: clamp(40px, 3vw, 60px);
-  line-height: clamp(44px, 3.3vw, 66px);
-  color: rgba(255, 255, 255, 1);
-  margin: clamp(20px, 3vw, 40px) 0 clamp(10px, 1.5vw, 15px) -5px;
-}
+  .title {
+    font-family: "Open Sans", sans-serif;
+    font-size: min(60px, calc(40px + (20 * ((100vw - 768px) / (1680 - 768)))));
+    line-height: min(66px, calc(44px + (22 * ((100vw - 768px) / (1680 - 768)))));
+    color: $white;
+    margin: min(40px, calc(20px + (20 * ((100vw - 768px) / (1680 - 768))))) 0 
+          min(15px, calc(10px + (5 * ((100vw - 768px) / (1680 - 768))))) -5px;
+  }
 
-.separator {
-  width: calc(100% - clamp(0px, 0.2vw, 2px));
-  border: none;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin-bottom: clamp(30px, 5vw, 52px);
-}
+  .separator {
+    width: calc(100% - clamp(0px, 0.2vw, 2px));
+    border: none;
+    height: 1px;
+    background-color: $white-transparent;
+    margin-bottom: clamp(30px, 5vw, 52px);
+  }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  gap: calc(6px + (12 * ((min(max(100vw, 768px), 1680px) - 768px) / (1680 - 768))));
-}
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    gap: min(18px, calc(6px + (12 * ((100vw - 768px) / (1680 - 768)))));
+  
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, min(364px, calc(145px + (219 * ((100vw - 768px) / (1680 - 768))))));
+      gap: min(18px, calc(6px + (12 * ((100vw - 768px) / (1680 - 768)))));
+      max-width: 1680px;
+    }
+  }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(145px, 1fr));
-  gap: calc(6px + (12 * ((min(max(100vw, 768px), 1680px) - 768px) / (1680 - 768))));
+  .closeIconContainer {
+    position: absolute;
+    top: 50px;
+    right: 63px;
+    width: min(44px, calc(20px + (24 * ((100vw - 768px) / (1680 - 768)))));
+    height: min(44px, calc(20px + (24 * ((100vw - 768px) / (1680 - 768)))));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  
+    .closeIcon {
+      width: 100%;
+      height: 100%;
+    }
+  }  
 }

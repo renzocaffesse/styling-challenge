@@ -1,24 +1,62 @@
+$primary-bg: rgba(255, 255, 255, 1);
+$hover-green: rgba(7, 192, 106, 1);
+$disabled-bg: rgba(170, 170, 170, 1);
+$border-default: transparent;
+$border-hover: $hover-green;
+
 .card {
-  width: clamp(145px, 18vw, 364px);
-  height: clamp(160px, 17vw, 322px);
-  background: rgba(255, 255, 255, 1);
+  width: min(364px, calc(145px + (219 * ((100vw - 768px) / (1680 - 768)))));
+  height: min(322px, calc(160px + (162 * ((100vw - 768px) / (1680 - 768)))));
+  background: $primary-bg;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 16px solid transparent;
-  transition: background 0.3s ease, border 0.3s ease;
+  border: min(16px, calc(10px + (6 * ((100vw - 768px) / (1680 - 768))))) solid $border-default;
+  transition: background 0.5s ease, border 0.5s ease;
   box-sizing: border-box;
-}
+  cursor: pointer;
 
-.tall {
-  width: clamp(145px, 18vw, 364px);
-  height: calc((clamp(160px, 17vw, 322px) * 2) + calc(6px + (12 * ((min(max(100vw, 768px), 1680px) - 768px) / (1680 - 768)))));
-}
+  &.tall {
+    width: min(364px, calc(145px + (219 * ((100vw - 768px) / (1680 - 768)))));
+    height: min(662px, calc((160px + (162 * ((100vw - 768px) / (1680 - 768)))) * 2 + min(18px, calc(6px + (12 * ((100vw - 768px) / (1680 - 768)))))));
+  }
 
-.default:hover {
-  background: rgba(7, 192, 106, 1);
-}
+  &.default {
+    &:hover {
+      background: $hover-green;
+      transition: background-color 0.5s ease;
 
-.border:hover {
-  border: 16px solid rgba(7, 192, 106, 1);
+      button {
+        background: $hover-green;
+        outline: 2px solid white;
+        transition: background-color 0.5s ease, border 0.5s ease;
+      }
+    }
+  }
+
+  &.border {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: min(34px, calc(14px + (20 * ((100vw - 768px) / (1680 - 768))))); 
+    transition: border-width 0.5s ease, padding 0.5s ease;
+    border: min(16px, calc(8px + (8 * ((100vw - 768px) / (1680 - 768))))) solid $border-default;
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: $border-hover;
+      transition: border-color 0.5s ease;
+
+      button {
+        background: $hover-green;
+        border: none;
+        transition: background-color 0.5s ease;
+      }
+    }
+  }
+
+  &.disabled {
+    background: $disabled-bg !important;
+    cursor: not-allowed;
+  }
 }

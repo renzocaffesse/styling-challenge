@@ -1,0 +1,68 @@
+$primary-bg: rgba(45, 62, 78, 1);
+$hover-green: rgba(7, 192, 106, 1);
+$disabled-bg: rgba(170, 170, 170, 1);
+$text-color: white;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: min(70px, calc(30px + (40 * ((100vw - 768px) / (1680 - 768)))));
+  border: none;
+  cursor: pointer;
+  transition: background 0.5s ease, border 0.5s ease, color 0.5s ease;
+  background: $primary-bg;
+
+  width: min(310px, calc(120px + (190 * ((100vw - 768px) / (1680 - 768)))));
+  height: min(70px, calc(28px + (42 * ((100vw - 768px) / (1680 - 768)))));
+
+  padding: min(10px, calc(10px + (4 * ((100vw - 1680px) / (1680 - 768)))))
+           min(27px, calc(27px + (15 * ((100vw - 1680px) / (1680 - 768)))));
+
+  &:hover {
+    background: $hover-green;
+  }
+
+  &.disabled {
+    background: $disabled-bg !important;
+    cursor: not-allowed;
+  }
+
+  &.default {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+
+  &.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(6px, 1vw, 16px);
+    text-align: left;
+    white-space: normal;
+    word-break: break-word;
+    text-overflow: ellipsis;
+
+    .iconSvg {
+      flex-shrink: 0;
+      width: min(22px, calc(10px + (12 * ((100vw - 768px) / (1680 - 768)))));
+      height: min(22px, calc(10px + (12 * ((100vw - 768px) / (1680 - 768)))));
+      margin-top: min(4px, calc(4px + (2 * ((100vw - 1680px) / (1680 - 768)))));
+    }
+  }
+
+  .text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    font-family: "Open Sans";
+    font-size: min(19px, calc(8px + (11 * ((100vw - 768px) / (1680 - 768)))));
+    line-height: min(24px, calc(10px + (14 * ((100vw - 768px) / (1680 - 768)))));
+    letter-spacing: -0.3px;
+    color: $text-color;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
